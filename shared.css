@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400,900');
+@import url('https://fonts.googleapis.com/css?family=Anton');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
 * {
     box-sizing: border-box;
   }
@@ -32,14 +36,12 @@
     color: #ccc;
     font-size: 1.25rem;
     padding: 0.5rem 1rem;
-    z-index: 1;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   
-  .main-header > div {
-    display: inline-block;
-    vertical-align: middle;
-  }
-
   .toggle-button {
     width: 3rem;
     background: transparent;
@@ -68,30 +70,25 @@
     text-decoration: none;
     font-weight: bold;
     font-size: 1.5rem;
-    height: 2.5rem;
-    display: inline-block;
-    vertical-align: middle;
   }
   
   .main-header--brand img {
-    height: 100%;
+    height: 3rem;
+    vertical-align: middle;
   }
 
   .main-nav {
     display: none;
-    /* text-align: right;
-    width: calc(100% - 122px);
-    vertical-align: middle; */
   }
   
   .main-nav-items {
     margin: 0;
     padding: 0;
     list-style: none;
+    display: flex;
   }
   
   .main-nav-item {
-    display: inline-block;
     margin: 0 1rem;
   }
   
@@ -108,7 +105,10 @@
     color: white;
     border-bottom: 3px solid white;
   }
-  
+  .main-nav-item--button {
+    animation: wiggle 200ms 2s 12 alternate;
+  }
+
   .main-nav-item--button a,
   .mobile-nav__item--cta a {
     color: white;
@@ -123,9 +123,89 @@
   .mobile-nav__item--cta a:active {
     background-color: #ff1b68;
     color: white;
-    /* border-bottom: 3px solid white;
-    border-radius: 5px;
-    padding: 10px; */
+    border: none;
+  }
+
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    background: white;
+    width: 80%;
+    height: 100vh;
+  }
+  
+  .mobile-nav__items {
+    width: 90%;
+    height: 100%;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mobile-nav__item {
+    margin: 1rem 0;
+  }
+  
+  .mobile-nav__item a {
+    font-size: 1.5rem;
+  }
+
+  .button {
+    background-color: #011638;
+    color: white;
+    font: inherit;
+    border: 1.5px solid #011638;
+    padding:  0.5rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .button:hover,
+  .button:active {
+    background-color: white;
+    color: #2f2f2f;
+    /* border: 1.5px solid white; */
+  }
+  
+  .button:focus {
+    outline: none;
+  }
+
+  .main-footer {
+    background-color: black;
+    padding: 2rem;
+    margin-top: 3rem;
+  }
+  
+  .main-footer__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .main-footer__link {
+    margin: 0.5rem 0;
+  }
+
+  .main-footer__link a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .main-footer__link a:hover,
+  .main-footer__link a:active {
+    color: #ccc;
   }
   
 @media (min-width: 40rem) {
@@ -134,10 +214,7 @@
   }
 
   .main-nav {
-    display: inline-block;
-    text-align: right;
-    width: calc(100% - 60px);
-    vertical-align: middle;
+    display: flex
   }
   .main-footer {
     background-color: black;
@@ -147,14 +224,15 @@
   
   .main-footer__links {
     list-style: none;
-    text-align: center;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .main-footer__link {
-    display: block;
-    margin: 1rem 0;
+    margin: 0.5rem 0;
   }
   
   .main-footer__link a {
@@ -182,9 +260,12 @@
     width: 90%;
     height: 100%;
     list-style: none;
-    margin: 10% auto;
+    margin: 0 auto;
     padding: 0;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   
   .mobile-nav__item {
@@ -204,7 +285,6 @@
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  /* margin-top: 5px; */
 }
 
 .button:hover,
@@ -222,7 +302,21 @@
 
 @media (min-width: 40rem) {
   .main-footer__link {
-    display: inline-block;
-    margin: 0 1rem;
+    display: flex;
+    margin: 0.5rem auto;
+  }
+  
+  .main-footer__links {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@keyframes wiggle {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(10deg);
   }
 }
